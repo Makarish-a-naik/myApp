@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Music sleeper
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Music sleeper</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-row>
+    <ion-col>
+      <app-time [seconds]='secondsCounter' [minute]='minutesCounter'></app-time>
+    </ion-col>
+  </ion-row>
+  volume {{volume}}
+  <ion-row>
+
+    <ion-col>
+      <ion-item class="ion-padding-vertical">
+        <ion-label position="floating">Sleep time (minutes)</ion-label>
+        <ion-input [debounce]='1000' (ionChange)="setTimer()" [(ngModel)]='minutes'></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="  ion-justify-content-around">
+    <ion-col size="auto">
+
+      <ion-button [disabled]='!interval' (click)="stop()">Stop</ion-button>
+    </ion-col>
+    <ion-col size="auto">
+
+      <ion-button [disabled]='interval' (click)="setTimer()">Start</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
