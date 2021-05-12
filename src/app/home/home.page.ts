@@ -21,11 +21,15 @@ export class HomePage implements OnInit {
   minutesCounter = this.inital.time;
   interval: any;
   constructor(
-    public audioman: AudioManagement) {
+    public audioman: AudioManagement,
+    public backgroundMode: BackgroundMode) {
 
   }
   ngOnInit() {
     this.getVolume();
+    this.backgroundMode.overrideBackButton();
+    this.backgroundMode.disableBatteryOptimizations();
+    this.backgroundMode.disableWebViewOptimizations();
   }
 
 
