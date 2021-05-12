@@ -21,30 +21,14 @@ export class HomePage implements OnInit {
   minutesCounter = this.inital.time;
   interval: any;
   constructor(
-    public audioman: AudioManagement,
-    private platform: Platform,
-    public backgroundMode: BackgroundMode) {
-    this.initializeApp();
+    public audioman: AudioManagement) {
 
   }
   ngOnInit() {
     this.getVolume();
-    this.configNotification();
   }
-  initializeApp() {
 
-  }
-  configNotification() {
-    this.backgroundMode.setDefaults({
-      title: 'Music Sleeper',
-      text: 'Music Sleeper',
-      icon: 'icon', // this will look for icon.png in platforms/android/res/drawable|mipmap
-      color: 'black', // hex format like 'F14F4D'
-      resume: true,
-      hidden: false,
-      bigText: true
-    });
-  }
+
   getVolume() {
     this.audioman.getVolume(AudioManagement.VolumeType.MUSIC)
       .then((value) => {
@@ -126,7 +110,6 @@ export class HomePage implements OnInit {
   stop() {
     if (this.interval) {
       clearInterval(this.interval);
-      this.backgroundMode.disable();
       this.interval = null;
       this.secondsCounter = this.inital.secondsCounter;
       this.minutesCounter = this.minutes;
