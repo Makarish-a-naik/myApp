@@ -95,13 +95,10 @@ export class HomePage implements OnInit {
       if (this.secondsCounter === 0) {
         this.minutesCounter--;
       }
-
       if (seconds <= 0 || this.volume === 0) {
         this.stop();
         return '';
       }
-
-
     }, 1000);
   }
 
